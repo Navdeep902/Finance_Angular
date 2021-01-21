@@ -1,0 +1,126 @@
+<div style="text-align: center; padding: 10px;">DASHBOARD</div>
+<div style="width: 400px;" class="card">
+    <div class="card-body">
+        <h5 style="text-align: right; color: red;" class="card-title">LFI</h5>
+        Card Number: {{emicard.Card_Number}}<br>
+        Name: {{emicard.username}}<br>
+        Valid till: {{emicard.valid | date:'MM/yy' }}<br>
+        CARD TYPE: <span *ngIf="emicard.Card_Type; else elseBlock">Titanium</span>
+        <ng-template #elseBlock>Gold</ng-template><br>
+    </div>
+    <div style="text-align: center;" class="card-footer"><span class="text-success"
+            *ngIf="emicard.Active; else elseBlock">ACTIVATED</span>
+        <ng-template #elseBlock>INACTIVE</ng-template>
+    </div>
+</div>
+<br><br>
+TOTAL CREDIT: {{cd.Total_Credit | currency:'INR'}}<br>
+CREDIT USED: {{cd.Credit_Used | currency:'INR'}}<br>
+REMAINING CREDIT: {{cd.Reamining_Credit | currency:'INR'}}<br>
+<div style="text-align: center; padding: 10px;">PRODUCTS PURCHASED</div>
+<br>
+<div style="margin-top: 30px;" class="card" *ngFor="let p of userProducts" (click)="pnow(p.Product_ID)">
+    <div class="card-header">{{p.Name}}</div>
+    <div class="card-body">
+        <div class="col-10">
+            <div class="row vertical-align">
+                <div class="col-4">
+                    <img class="imageClass" [src]="p.imagePath" />
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-6">
+                            Details
+                        </div>
+                        <div class="col-6">
+                            : {{p.Details}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Cost
+                        </div>
+                        <div class="col-6">
+                            : {{p.Cost | currency:'INR'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Paid
+                        </div>
+                        <div class="col-6">
+                            : {{p.Amount_Paid | currency:'INR'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Balance
+                        </div>
+                        <div class="col-6">
+                            : {{ p.Balance | currency:'INR'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<table>
+    <tr>
+        <td>PRODUCT NAME: XYZ <td>
+        <td>AMOUNT:</td>   
+    </tr>
+    <tr>
+        <td>PAID: 15,000<td>  
+    </tr> 
+    <tr>
+        <td>BALANCE:</td>    
+    </tr>  
+</table>
+-->
+<br><br>
+RECENT TRANSACTIONS<br><br>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm">
+                PRODUCT
+            </div>
+            <div style="padding-left: 100px;" class="col-sm">
+                DATE
+            </div>
+            <div style="padding-left: 50px;" class="col-sm">
+                AMOUNT PAID
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <span *ngFor="let item of transactions">
+            <div class="row">
+                <div class="col-sm">
+                    {{item.Name}}
+                </div>
+                <div class="col-sm">
+                    {{item.Date | date:'MMM d, y'}}
+                </div>
+                <div class="col-sm">
+                    {{item.Amount_Paid | currency:'INR'}}
+                </div>
+            </div>
+        </span>
+    </div>
+</div>
+<br>
+<!--
+<div  style="margin: 0 auto; float: none; width: 800px;" class="card">
+    <div class="card-header">
+        <span style="padding-right: 270px;">PRODUCT</span>
+        <span style="padding-right: 270px;">DATE</span>
+        AMOUNT PAID
+    </div>   
+    <div class="card-body">
+
+    </div>
+</div>
+-->

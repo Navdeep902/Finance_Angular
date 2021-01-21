@@ -1,0 +1,14 @@
+.imageClass{
+    widows: 200px;
+    height: 200px;
+}
+
+.vertical-align{
+    display: flex;
+    align-items: center;
+}
+
+.card{
+    margin: 0 auto;
+    float: none;
+}

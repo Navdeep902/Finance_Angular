@@ -1,0 +1,22 @@
+.card{
+    margin: 0 auto;
+    float: none;
+}
+
+td{
+    padding-right: 10px;    
+}
+
+.col-sm{
+    padding-left: 70px;
+}
+
+.imageClass{
+    widows: 200px;
+    height: 200px;
+}
+
+.vertical-align{
+    display: flex;
+    align-items: center;
+}

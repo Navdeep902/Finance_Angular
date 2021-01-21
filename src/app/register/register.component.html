@@ -1,0 +1,91 @@
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<div style="margin-top: 30px; width: 600px;" class="card">
+    <div class="card-header">Register</div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="InsertUser(f)">
+            <div class="form-group">
+                <label for="registerName">Name</label>
+                <input type="text" name="Name" [(ngModel)]="register.Name" required #name="ngModel" class="form-control"
+                    id="Name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" name="email" class="form-control" [(ngModel)]="register.email" required
+                    #email="ngModel" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="registerPhone">Phone Number</label>
+                <input type="tel" name="Phone_No" class="form-control" [(ngModel)]="register.Phone_No" required
+                    minlength="10" maxlength="10" id="Phone_No" placeholder="Enter Phone Number">
+            </div>
+            <div class="form-group">
+                <label for="registerUsername">Username</label>
+                <input type="text" name="username" class="form-control" [(ngModel)]="register.username" required
+                    #username="ngModel" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" name="Password" class="form-control" [(ngModel)]="register.Password" required
+                    #password="ngModel" id="Password" placeholder="Password"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+                <div *ngIf="password.invalid && (f.submitted || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors?.required"> Password is required. </div>
+                    <div *ngIf="password.errors?.pattern"> Must contain at least one number and one uppercase
+                        and
+                        lowercase letter, and at least 8 or more characters.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registerCpassword">Confirm Password</label>
+                <input type="password" name="comfirmpassword" class="form-control" ngModel required
+                    #confirmpassword="ngModel" id="registerCpassword" placeholder="Enter Password again"
+                    pattern="{{ password.value }}" />
+                <div *ngIf=" confirmpassword.invalid && (f.submitted || confirmpassword.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="confirmpassword.errors?.required"> Confirm password is required. </div>
+                    <div *ngIf="confirmpassword.errors?.pattern"> Password & Confirm Password does not match.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registerAddress">Address</label>
+                <input type="textbox" class="form-control" [(ngModel)]="register.Address" required name="Address"
+                    #address="ngModel" id="Address" placeholder="Enter Address">
+            </div>
+            <div class="form-group">
+                <label><input type="radio" [(ngModel)]="register.Card_Type" name="Card_Type" value=true>
+                    Titanium</label>
+                <label><input type="radio" [(ngModel)]="register.Card_Type" name="Card_Type" value=false checked>
+                    Gold</label>
+            </div>
+            <div class="form-group">
+                <label for="registerBank">Bank Name</label>
+                <input type="text" class="form-control" [(ngModel)]="register.Bank_Name" required name="Bank_Name"
+                    #bankname="ngModel" id="Bank_Name" placeholder="Enter Bank Name">
+            </div>
+            <div class="form-group">
+                <label for="registerSavingsinfo">Savings Account Info</label>
+                <input type="text" class="form-control" [(ngModel)]="register.Account_Number" required
+                    name="Account_Number" #savingsinfo="ngModel" id="Account_Number"
+                    placeholder="Enter Savings Account Info">
+            </div>
+            <div class="form-group">
+                <label for="registerIfsc">IFSC Code</label>
+                <input type="text" class="form-control" [(ngModel)]="register.IFSC_Code" required name="IFSC_Code"
+                    #ifsc="ngModel" id="IFSC_Code" placeholder="Enter IFSC Code">
+            </div>
+            <label for="myfile">Select a file:</label><br>
+            <input type="file" [(ngModel)]="register.document" id="document" name="document"><br /><br />
+
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Register </button>
+
+            &nbsp;
+            <button type="button" class="btn btn-primary" (click)="f.reset()">Reset</button>
+            <p>Already a user?
+                <a [routerLink]="['/login']">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+<br>

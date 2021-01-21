@@ -1,0 +1,55 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">LFI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="list">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dashboard">Dashboard</a>
+        </li>
+      </ul>
+      <a class="navbar-text">
+        {{username}}
+      </a>
+      <ul class="navbar-nav topnav-right">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register">Register</a>
+        </li>
+      </ul>
+      <div *ngIf="username">
+        <a class="nav-text navbar-left">
+          <div class="nav-link" (click)="logout()">Logout</div>
+        </a>
+      </div>
+      <div *ngIf="adminUsername">
+        <a class="nav-text navbar-left">
+          <div class="nav-link" (click)="logout()">Logout</div>
+        </a>
+      </div>
+      <a class="navbar-brand" (click)="onclick()">
+        <img src="assets/images/cart.svg" width="20" height="20" alt="">
+      </a><br><br>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  <footer>
+    <div style="margin-top: 30px;" class="card">
+      <div class="card-body bg-light">
+        <div style="text-align: center;">Copyright © 2009 - 2021 LFI. All Rights Reserved. LFI® is a registered
+          trademark.</div><br>
+        <div style="text-align: center;">Managed by LFI | WordPress hosting by L&T | WordPress CDN by L&T Group </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<br>

@@ -1,0 +1,24 @@
+<div style="margin-top: 30px; margin-bottom: 150px; width: 600px;" class="card">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group">
+                <label for="loginUsername">Username</label>
+                <input type="text" name="username" ngModel required #username="ngModel" class="form-control"
+                    id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" name="password" ngModel required #password="ngModel" class="form-control"
+                    id="password" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+                <a [routerLink]="['/resetpassword']">Forgot Password?</a>
+            </div>
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Login </button>
+            <p>Not a member?
+                <a [routerLink]="['/register']">Register</a>
+            </p>
+        </form>
+    </div>
+</div>
